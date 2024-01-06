@@ -9,4 +9,5 @@ public interface IAuthorizationJWT
     Tuple<bool, string?> Authorize(string token1);
     bool ServerIsAuthorized(ActionExecutingContext filterContext);
     string RefreshToken(string jwt);
+    DateTime? GetTokenExpiry(string jwt);
 }

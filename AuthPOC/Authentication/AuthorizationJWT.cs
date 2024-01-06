@@ -180,6 +180,39 @@ public class AuthorizationJWT : IAuthorizationJWT
         }
     }
 
+    public DateTime? GetTokenExpiry(string currentjwt)
+    {
+        try
+        {
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+            JwtSecurityToken token = (JwtSecurityToken)handler.ReadJwtToken(currentjwt.Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase));
+            var claimUser = token.Claims.FirstOrDefault(x => x.Type == _claimType);
+            var claimExpiration = token.Claims.FirstOrDefault(x => x.Type == "exp");
+
+            if (claimUser != null)
+            {
+                if (claimExpiration != null)
+                {
+                    DateTime expDate = DateTimeOffset.FromUnixTimeSeconds(long.Parse(claimExpiration.Value)).LocalDateTime;
+                    if ((expDate - DateTime.Now).TotalMinutes > 0)
+                    {
+                        return expDate;
+                    }
+                    else
+                        return null;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
+
 }
 
 
