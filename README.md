@@ -2,19 +2,19 @@
 
 This is a Proof of Concept C# .net 8 WebAPI application to Authenticate, Authorize, and Refresh JWT Token with these libaries only: 
 
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Security.Principal;
+  using Microsoft.IdentityModel.Tokens;  
+  using System.IdentityModel.Tokens.Jwt;  
+  using System.Security.Claims;  
+  using System.Security.Cryptography;  
+  using System.Security.Principal;  
 
 It has 5 endpoints:
 
-1. /api/Login - Get -> Open to public
-2. /api/Login - Post -> Open to public, requires username and password json payload, issue Bearer token upon authentication
-3. /api/restrictedEndPoint - Get -> Requires valid Bearer token jwt
-4. /api/restrictedEndPoint - Post -> Requires valid Bearer token jwt
-5. /api/refreshToken - Post ->  Requires valid Bearer token jwt
+/api/Login - Get -> Open to public  
+/api/Login - Post -> Open to public, requires username and password json payload, issue Bearer token upon authentication  
+/api/restrictedEndPoint - Get -> Requires valid Bearer token jwt  
+/api/restrictedEndPoint - Post -> Requires valid Bearer token jwt  
+/api/refreshToken - Post ->  Requires valid Bearer token jwt  
 
 This app will run out of the box provided the local machine is setup to debug in ssl. 
 
