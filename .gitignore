@@ -4,3 +4,5 @@
 
 /.vs/AuthPOC/FileContentIndex
 /AuthPOC/obj
+/AuthPOC/bin/Debug/net8.0
+/.vs/AuthPOC/config
