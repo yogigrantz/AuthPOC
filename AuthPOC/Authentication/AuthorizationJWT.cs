@@ -194,12 +194,7 @@ public class AuthorizationJWT : IAuthorizationJWT
                 if (claimExpiration != null)
                 {
                     DateTime expDate = DateTimeOffset.FromUnixTimeSeconds(long.Parse(claimExpiration.Value)).LocalDateTime;
-                    if ((expDate - DateTime.Now).TotalMinutes > 0)
-                    {
-                        return expDate;
-                    }
-                    else
-                        return null;
+                    return expDate;
                 }
                 else
                     return null;
